@@ -4,69 +4,43 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>William Cerón | Portafolio Artístico</title>
-
 <style>
-body { margin: 0; background: #000; color: #fff; font-family: 'Segoe UI', Arial, sans-serif; overflow-x: hidden; }
-
-/* INTRO */
-.intro { height: 100vh; display: flex; justify-content: center; align-items: center; font-size: 1.8em; text-align: center; opacity: 0; animation: fadeIn 3s forwards; }
-@keyframes fadeIn { to { opacity: 1; } }
-
-.section { padding: 80px 20px; max-width: 1100px; margin: auto; }
-
-/* 1. RESUMIDOW */
-.resumido { text-align: center; }
-.resumido h2 { font-weight: 300; letter-spacing: 5px; margin-bottom: 10px; font-size: 2em; }
-.resumido p { opacity: 0.5; font-style: italic; margin-bottom: 50px; }
-
-.gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-.gallery img { width: 100%; height: auto; cursor: pointer; transition: 0.6s ease; opacity: 0; transform: translateY(30px); border: 1px solid rgba(255,255,255,0.1); }
-.gallery img.visible { opacity: 1; transform: translateY(0); }
-
-/* FRASE DE TRANSICIÓN 1 */
-.frase-medio { text-align: center; font-size: 1.5em; opacity: 0.6; margin: 100px 0; font-style: italic; }
-
-/* 2. TRAYECTORIA COMPLETA */
-.trayectoria-section { padding: 100px 20px; text-align: center; background: #080808; }
-.trayectoria-section h2 { letter-spacing: 8px; margin-bottom: 80px; font-size: 2.2em; text-transform: uppercase; border-bottom: 1px solid #333; display: inline-block; padding-bottom: 15px; }
-.trayectoria-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 50px; }
-
-/* 3. ESENCIA EQUINA (CABALLOS) */
-.equina-section { padding: 100px 20px; text-align: center; background: #000; }
-.equina-section h2 { letter-spacing: 8px; margin-bottom: 80px; font-size: 2.2em; text-transform: uppercase; border-bottom: 2px solid #fff; display: inline-block; padding-bottom: 15px; }
-
-/* ESTILO DE OBRA */
-.obra-item { margin-bottom: 80px; text-align: center; }
-.obra-item img { width: 100%; height: auto; border: 1px solid rgba(255,255,255,0.2); transition: 0.5s; cursor: pointer; }
-.obra-item img:hover { border-color: #fff; box-shadow: 0 0 25px rgba(255,255,255,0.1); }
-.obra-item h3 { margin-top: 25px; letter-spacing: 3px; font-weight: 400; text-transform: uppercase; color: #fff; font-size: 1em; }
-.obra-item p { opacity: 0.4; font-size: 0.85em; margin-top: 5px; font-style: italic; }
-
-/* VISIÓN FINAL */
-.vision-section { text-align: center; padding: 120px 20px; background: #030303; }
-.vision-frase { max-width: 800px; margin: 0 auto; line-height: 1.8; font-size: 1.3em; opacity: 0.8; font-style: italic; color: #ccc; }
-
-/* MODAL */
-.modal { display: none; position: fixed; background: rgba(0,0,0,0.98); top: 0; left: 0; width: 100%; height: 100%; z-index: 1000; justify-content: center; align-items: center; }
-.modal img { max-width: 95%; max-height: 95%; border: 1px solid #fff; }
-
-footer { text-align: center; padding: 80px; opacity: 0.3; font-size: 0.7em; letter-spacing: 2px; }
+    body { margin: 0; background: #000; color: #fff; font-family: 'Segoe UI', Arial, sans-serif; overflow-x: hidden; }
+    .intro { height: 100vh; display: flex; justify-content: center; align-items: center; font-size: 1.8em; text-align: center; opacity: 0; animation: fadeIn 3s forwards; }
+    @keyframes fadeIn { to { opacity: 1; } }
+    .section { padding: 80px 20px; max-width: 1100px; margin: auto; }
+    .resumido { text-align: center; }
+    .resumido h2 { font-weight: 300; letter-spacing: 5px; margin-bottom: 10px; font-size: 2em; }
+    .resumido p { opacity: 0.5; font-style: italic; margin-bottom: 50px; }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+    .gallery img { width: 100%; height: auto; cursor: pointer; transition: 0.6s ease; opacity: 0; transform: translateY(30px); border: 1px solid rgba(255,255,255,0.1); }
+    .gallery img.visible { opacity: 1; transform: translateY(0); }
+    .frase-medio { text-align: center; font-size: 1.5em; opacity: 0.6; margin: 100px 0; font-style: italic; }
+    .trayectoria-section { padding: 100px 20px; text-align: center; background: #080808; }
+    .trayectoria-section h2 { letter-spacing: 8px; margin-bottom: 80px; font-size: 2.2em; text-transform: uppercase; border-bottom: 1px solid #333; display: inline-block; padding-bottom: 15px; }
+    .trayectoria-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 50px; }
+    .equina-section { padding: 100px 20px; text-align: center; background: #000; }
+    .equina-section h2 { letter-spacing: 8px; margin-bottom: 80px; font-size: 2.2em; text-transform: uppercase; border-bottom: 2px solid #fff; display: inline-block; padding-bottom: 15px; }
+    .obra-item { margin-bottom: 80px; text-align: center; }
+    .obra-item img { width: 100%; height: auto; border: 1px solid rgba(255,255,255,0.2); transition: 0.5s; cursor: pointer; }
+    .obra-item img:hover { border-color: #fff; box-shadow: 0 0 25px rgba(255,255,255,0.1); }
+    .obra-item h3 { margin-top: 25px; letter-spacing: 3px; font-weight: 400; text-transform: uppercase; color: #fff; font-size: 1em; }
+    .vision-section { text-align: center; padding: 120px 20px; background: #030303; }
+    .vision-frase { max-width: 800px; margin: 0 auto; line-height: 1.8; font-size: 1.3em; opacity: 0.8; font-style: italic; color: #ccc; }
+    .modal { display: none; position: fixed; background: rgba(0,0,0,0.98); top: 0; left: 0; width: 100%; height: 100%; z-index: 1000; justify-content: center; align-items: center; }
+    .modal img { max-width: 95%; max-height: 95%; border: 1px solid #fff; }
+    footer { text-align: center; padding: 80px; opacity: 0.3; font-size: 0.7em; letter-spacing: 2px; }
 </style>
 </head>
-
 <body>
-
-<section class="intro">
-    <div>No necesito mucho para decir más</div>
-</section>
+<section class="intro"><div>No necesito mucho para decir más</div></section>
 
 <section class="section resumido">
-    <h2>RESUMIDOW</h2>
-    <p>Lo esencial no se pinta… se revela</p>
+    <h2>RESUMIDOW</h2><p>Lo esencial no se pinta… se revela</p>
     <div class="gallery">
-        <img src="La%20chica%20de%20la%20flor.jpeg" onclick="openModal(this)" alt="La chica de la flor">
-        <img src="Estampida.jpeg" onclick="openModal(this)" alt="Estampida">
-        <img src="Giro%20vital.jpeg" onclick="openModal(this)" alt="Giro Vital">
+        <img src="La%20chica%20de%20la%20flor.jpeg" onclick="openModal(this)">
+        <img src="Estampida.jpeg" onclick="openModal(this)">
+        <img src="Giro%20vital.jpeg" onclick="openModal(this)">
     </div>
 </section>
 
@@ -77,53 +51,38 @@ footer { text-align: center; padding: 80px; opacity: 0.3; font-size: 0.7em; lett
     <div class="trayectoria-grid">
         <div class="obra-item"><img src="fervor-fucsia.jpg" onclick="openModal(this)"><h3>Fervor en Fucsia</h3></div>
         <div class="obra-item"><img src="alma-de-acordeon.jpg" onclick="openModal(this)"><h3>Alma de Acordeón</h3></div>
+        <div class="obra-item"><img src="reflejo-del-ser.jpg" onclick="openModal(this)"><h3>Reflejo del Ser</h3></div>
+        <div class="obra-item"><img src="mirada-de-guerra.jpg" onclick="openModal(this)"><h3>Mirada de Guerra</h3></div>
+        <div class="obra-item"><img src="eterno-sufrimiento.jpg" onclick="openModal(this)"><h3>Eterno Sufrimiento</h3></div>
+        <div class="obra-item"><img src="metamorfosis-pop.jpg" onclick="openModal(this)"><h3>Metamorfosis Pop</h3></div>
         <div class="obra-item"><img src="caos-interior.jpg" onclick="openModal(this)"><h3>Caos Interior</h3></div>
         <div class="obra-item"><img src="esencia-atrapada.jpg" onclick="openModal(this)"><h3>Esencia Atrapada</h3></div>
-        <div class="obra-item"><img src="edad-esplendor.jpg" onclick="openModal(this)"><h3>La Edad del Esplendor</h3></div>
         <div class="obra-item"><img src="raices-del-alma.jpg" onclick="openModal(this)"><h3>Raíces del Alma</h3></div>
-        <div class="obra-item"><img src="reflejo-del-ser.jpg" onclick="openModal(this)"><h3>Reflejo del Ser</h3></div>
-        <div class="obra-item"><img src="cielo-en-mirada.jpg" onclick="openModal(this)"><h3>Cielo en la Mirada</h3></div>
+        <div class="obra-item"><img src="toque-creacion.jpg" onclick="openModal(this)"><h3>El Toque de la Creación</h3></div>
+        <div class="obra-item"><img src="duelo-sabiduria.jpg" onclick="openModal(this)"><h3>Duelo de Sabiduría</h3></div>
+        <div class="obra-item"><img src="petalos-del-tiempo.jpg" onclick="openModal(this)"><h3>Pétalos del Tiempo</h3></div>
+        <div class="obra-item"><img src="edad-esplendor.jpg" onclick="openModal(this)"><h3>La Edad del Esplendor</h3></div>
+        <div class="obra-item"><img src="refugio.jpg" onclick="openModal(this)"><h3>Refugio</h3></div>
+        <div class="obra-item"><img src="alma-reflejada.jpg" onclick="openModal(this)"><h3>Alma Reflejada</h3></div>
         <div class="obra-item"><img src="mirada-iconica.jpg" onclick="openModal(this)"><h3>Mirada Icónica</h3></div>
-        <div class="obra-item"><img src="eterno-sufrimiento.jpg" onclick="openModal(this)"><h3>Eterno Sufrimiento</h3></div>
-        <div class="obra-item"><img src="grito-de-color.jpg" onclick="openModal(this)"><h3>Grito de Color</h3></div>
-        <div class="obra-item"><img src="refugio-sombra.jpg" onclick="openModal(this)"><h3>Refugio en la Sombra</h3></div>
+        <div class="obra-item"><img src="lagertha.jpg" onclick="openModal(this)"><h3>Lagertha</h3></div>
     </div>
 </section>
 
 <section class="equina-section">
     <h2>Esencia Equina</h2>
     <div class="trayectoria-grid">
-        <div class="obra-item">
-            <img src="nobleza-colorada.jpg" onclick="openModal(this)">
-            <h3>Nobleza Colorada</h3>
-            <p>Óleo sobre lienzo</p>
-        </div>
-        <div class="obra-item">
-            <img src="libertad-en-movimiento.jpg" onclick="openModal(this)">
-            <h3>Libertad en Movimiento</h3>
-            <p>Estudio de crines</p>
-        </div>
-        <div class="obra-item">
-            <img src="vigor-desbocado.jpg" onclick="openModal(this)">
-            <h3>Vigor Desbocado</h3>
-            <p>Salto y poder</p>
-        </div>
+        <div class="obra-item"><img src="vigor-desbocado.jpg" onclick="openModal(this)"><h3>Vigor Desbocado</h3></div>
+        <div class="obra-item"><img src="libertad-movimiento.jpg" onclick="openModal(this)"><h3>Libertad en Movimiento</h3></div>
     </div>
 </section>
 
 <section class="vision-section">
-    <p class="vision-frase">
-        "La esencia de William trasciende la forma; su alma yace en la versatilidad y la expresión pura de su ser. Donde la pincelada se libera, el espíritu se revela."
-    </p>
+    <p class="vision-frase">"Desde las raíces campesinas de San Vicente del Caguán, la esencia de William trasciende la forma. Su alma yace en la versatilidad de la pincelada que se libera para revelar el espíritu."</p>
 </section>
 
-<div class="modal" id="modal" onclick="closeModal()">
-    <img id="modalImg">
-</div>
-
-<footer>
-    WILLIAM CERÓN — FLORENCIA, CAQUETÁ — 2026
-</footer>
+<div class="modal" id="modal" onclick="closeModal()"><img id="modalImg"></div>
+<footer>WILLIAM CERÓN — CAMPESINO ORIUNDO DE SAN VICENTE DEL CAGUÁN — 2026</footer>
 
 <script>
 function openModal(img){ document.getElementById("modal").style.display = "flex"; document.getElementById("modalImg").src = img.src; }
@@ -139,6 +98,5 @@ function checkScroll() {
 window.addEventListener('scroll', checkScroll);
 window.addEventListener('load', checkScroll);
 </script>
-
 </body>
 </html>
