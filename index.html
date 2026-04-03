@@ -3,143 +3,54 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>William Cerón | ResumidoW</title>
+<title>William Cerón | Portafolio Artístico</title>
 
 <style>
-body {
-    margin: 0;
-    background: #000;
-    color: #fff;
-    font-family: Arial, sans-serif;
-    overflow-x: hidden;
-}
+body { margin: 0; background: #000; color: #fff; font-family: 'Segoe UI', Arial, sans-serif; overflow-x: hidden; }
 
 /* INTRO */
-.intro {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.8em;
-    text-align: center;
-    opacity: 0;
-    animation: fadeIn 3s forwards;
-}
+.intro { height: 100vh; display: flex; justify-content: center; align-items: center; font-size: 1.8em; text-align: center; opacity: 0; animation: fadeIn 3s forwards; }
+@keyframes fadeIn { to { opacity: 1; } }
 
-@keyframes fadeIn {
-    to { opacity: 1; }
-}
+.section { padding: 80px 20px; max-width: 1100px; margin: auto; }
 
-.section {
-    padding: 80px 20px;
-    max-width: 1100px;
-    margin: auto;
-}
+/* 1. RESUMIDOW */
+.resumido { text-align: center; }
+.resumido h2 { font-weight: 300; letter-spacing: 5px; margin-bottom: 10px; font-size: 2em; }
+.resumido p { opacity: 0.5; font-style: italic; margin-bottom: 50px; }
 
-/* 1. ESTILO RESUMIDOW (Galería Minimalista) */
-.resumido {
-    text-align: center;
-}
+.gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.gallery img { width: 100%; height: auto; cursor: pointer; transition: 0.6s ease; opacity: 0; transform: translateY(30px); border: 1px solid rgba(255,255,255,0.1); }
+.gallery img.visible { opacity: 1; transform: translateY(0); }
 
-.resumido h2 {
-    font-weight: normal;
-    letter-spacing: 4px;
-    margin-bottom: 10px;
-}
+/* FRASE DE TRANSICIÓN 1 */
+.frase-medio { text-align: center; font-size: 1.5em; opacity: 0.6; margin: 100px 0; font-style: italic; }
 
-.resumido p {
-    opacity: 0.5;
-    font-style: italic;
-    margin-bottom: 50px;
-}
+/* 2. TRAYECTORIA COMPLETA */
+.trayectoria-section { padding: 100px 20px; text-align: center; background: #080808; }
+.trayectoria-section h2 { letter-spacing: 8px; margin-bottom: 80px; font-size: 2.2em; text-transform: uppercase; border-bottom: 1px solid #333; display: inline-block; padding-bottom: 15px; }
+.trayectoria-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 50px; }
 
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-}
+/* 3. ESENCIA EQUINA (CABALLOS) */
+.equina-section { padding: 100px 20px; text-align: center; background: #000; }
+.equina-section h2 { letter-spacing: 8px; margin-bottom: 80px; font-size: 2.2em; text-transform: uppercase; border-bottom: 2px solid #fff; display: inline-block; padding-bottom: 15px; }
 
-.gallery img {
-    width: 100%;
-    height: auto;
-    cursor: pointer;
-    transition: 0.6s ease;
-    opacity: 0;
-    transform: translateY(30px);
-    border: 1px solid rgba(255,255,255,0.1);
-}
+/* ESTILO DE OBRA */
+.obra-item { margin-bottom: 80px; text-align: center; }
+.obra-item img { width: 100%; height: auto; border: 1px solid rgba(255,255,255,0.2); transition: 0.5s; cursor: pointer; }
+.obra-item img:hover { border-color: #fff; box-shadow: 0 0 25px rgba(255,255,255,0.1); }
+.obra-item h3 { margin-top: 25px; letter-spacing: 3px; font-weight: 400; text-transform: uppercase; color: #fff; font-size: 1em; }
+.obra-item p { opacity: 0.4; font-size: 0.85em; margin-top: 5px; font-style: italic; }
 
-.gallery img.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* 2. ESTILO MIS OBRAS (Muestra Detallada) */
-.mis-obras-section {
-    padding: 100px 20px;
-    text-align: center;
-    background: #050505; /* Fondo sutilmente distinto */
-}
-
-.mis-obras-section h2 {
-    letter-spacing: 6px;
-    margin-bottom: 70px;
-    font-size: 1.5em;
-}
-
-.obra-contenedor {
-    margin-bottom: 120px;
-}
-
-.obra-contenedor img {
-    width: 95%;
-    max-width: 800px;
-    border: 1px solid rgba(255,255,255,0.4);
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
-}
-
-.obra-contenedor p {
-    margin-top: 25px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    font-size: 0.85em;
-    color: #aaa;
-}
+/* VISIÓN FINAL */
+.vision-section { text-align: center; padding: 120px 20px; background: #030303; }
+.vision-frase { max-width: 800px; margin: 0 auto; line-height: 1.8; font-size: 1.3em; opacity: 0.8; font-style: italic; color: #ccc; }
 
 /* MODAL */
-.modal {
-    display: none;
-    position: fixed;
-    background: rgba(0,0,0,0.98);
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-}
+.modal { display: none; position: fixed; background: rgba(0,0,0,0.98); top: 0; left: 0; width: 100%; height: 100%; z-index: 1000; justify-content: center; align-items: center; }
+.modal img { max-width: 95%; max-height: 95%; border: 1px solid #fff; }
 
-.modal img {
-    max-width: 95%;
-    max-height: 95%;
-}
-
-.frase-final {
-    text-align: center;
-    font-size: 1.4em;
-    opacity: 0.5;
-    margin: 150px 0;
-    font-style: italic;
-}
-
-footer {
-    text-align: center;
-    padding: 80px;
-    opacity: 0.3;
-    font-size: 0.75em;
-    letter-spacing: 1px;
-}
+footer { text-align: center; padding: 80px; opacity: 0.3; font-size: 0.7em; letter-spacing: 2px; }
 </style>
 </head>
 
@@ -152,7 +63,6 @@ footer {
 <section class="section resumido">
     <h2>RESUMIDOW</h2>
     <p>Lo esencial no se pinta… se revela</p>
-
     <div class="gallery">
         <img src="La%20chica%20de%20la%20flor.jpeg" onclick="openModal(this)" alt="La chica de la flor">
         <img src="Estampida.jpeg" onclick="openModal(this)" alt="Estampida">
@@ -160,25 +70,51 @@ footer {
     </div>
 </section>
 
-<div class="frase-final">Antes de reducir… tuve que aprender a ver</div>
+<div class="frase-medio">Antes de reducir… tuve que aprender a ver</div>
 
-<section class="mis-obras-section">
-    <h2>MIS OBRAS</h2>
-    
-    <div class="obra-contenedor">
-        <img src="Estampida.jpeg" alt="Estampida">
-        <p>Estampida</p>
+<section class="trayectoria-section">
+    <h2>Trayectoria</h2>
+    <div class="trayectoria-grid">
+        <div class="obra-item"><img src="fervor-fucsia.jpg" onclick="openModal(this)"><h3>Fervor en Fucsia</h3></div>
+        <div class="obra-item"><img src="alma-de-acordeon.jpg" onclick="openModal(this)"><h3>Alma de Acordeón</h3></div>
+        <div class="obra-item"><img src="caos-interior.jpg" onclick="openModal(this)"><h3>Caos Interior</h3></div>
+        <div class="obra-item"><img src="esencia-atrapada.jpg" onclick="openModal(this)"><h3>Esencia Atrapada</h3></div>
+        <div class="obra-item"><img src="edad-esplendor.jpg" onclick="openModal(this)"><h3>La Edad del Esplendor</h3></div>
+        <div class="obra-item"><img src="raices-del-alma.jpg" onclick="openModal(this)"><h3>Raíces del Alma</h3></div>
+        <div class="obra-item"><img src="reflejo-del-ser.jpg" onclick="openModal(this)"><h3>Reflejo del Ser</h3></div>
+        <div class="obra-item"><img src="cielo-en-mirada.jpg" onclick="openModal(this)"><h3>Cielo en la Mirada</h3></div>
+        <div class="obra-item"><img src="mirada-iconica.jpg" onclick="openModal(this)"><h3>Mirada Icónica</h3></div>
+        <div class="obra-item"><img src="eterno-sufrimiento.jpg" onclick="openModal(this)"><h3>Eterno Sufrimiento</h3></div>
+        <div class="obra-item"><img src="grito-de-color.jpg" onclick="openModal(this)"><h3>Grito de Color</h3></div>
+        <div class="obra-item"><img src="refugio-sombra.jpg" onclick="openModal(this)"><h3>Refugio en la Sombra</h3></div>
     </div>
+</section>
 
-    <div class="obra-contenedor">
-        <img src="La%20chica%20de%20la%20flor.jpeg" alt="La chica de la flor">
-        <p>La chica de la flor</p>
+<section class="equina-section">
+    <h2>Esencia Equina</h2>
+    <div class="trayectoria-grid">
+        <div class="obra-item">
+            <img src="nobleza-colorada.jpg" onclick="openModal(this)">
+            <h3>Nobleza Colorada</h3>
+            <p>Óleo sobre lienzo</p>
+        </div>
+        <div class="obra-item">
+            <img src="libertad-en-movimiento.jpg" onclick="openModal(this)">
+            <h3>Libertad en Movimiento</h3>
+            <p>Estudio de crines</p>
+        </div>
+        <div class="obra-item">
+            <img src="vigor-desbocado.jpg" onclick="openModal(this)">
+            <h3>Vigor Desbocado</h3>
+            <p>Salto y poder</p>
+        </div>
     </div>
+</section>
 
-    <div class="obra-contenedor">
-        <img src="Giro%20vital.jpeg" alt="Giro vital">
-        <p>Giro Vital</p>
-    </div>
+<section class="vision-section">
+    <p class="vision-frase">
+        "La esencia de William trasciende la forma; su alma yace en la versatilidad y la expresión pura de su ser. Donde la pincelada se libera, el espíritu se revela."
+    </p>
 </section>
 
 <div class="modal" id="modal" onclick="closeModal()">
@@ -186,28 +122,18 @@ footer {
 </div>
 
 <footer>
-    WILLIAM CERÓN — EL ARTE VIVE DONDE NO SE EXPLICA
+    WILLIAM CERÓN — FLORENCIA, CAQUETÁ — 2026
 </footer>
 
 <script>
-function openModal(img){
-    document.getElementById("modal").style.display = "flex";
-    document.getElementById("modalImg").src = img.src;
-}
-
-function closeModal(){
-    document.getElementById("modal").style.display = "none";
-}
-
-// Efecto de aparición suave de imágenes
-const images = document.querySelectorAll('.gallery img');
+function openModal(img){ document.getElementById("modal").style.display = "flex"; document.getElementById("modalImg").src = img.src; }
+function closeModal(){ document.getElementById("modal").style.display = "none"; }
+const images = document.querySelectorAll('img');
 function checkScroll() {
     const trigger = window.innerHeight * 0.85;
     images.forEach(img => {
         const top = img.getBoundingClientRect().top;
-        if(top < trigger){
-            img.classList.add('visible');
-        }
+        if(top < trigger) img.classList.add('visible');
     });
 }
 window.addEventListener('scroll', checkScroll);
