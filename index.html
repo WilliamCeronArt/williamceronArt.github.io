@@ -27,12 +27,22 @@
     .obra-item h3 { margin-top: 25px; letter-spacing: 3px; font-weight: 400; text-transform: uppercase; color: #fff; font-size: 1em; }
     .vision-section { text-align: center; padding: 120px 20px; background: #030303; }
     .vision-frase { max-width: 800px; margin: 0 auto; line-height: 1.8; font-size: 1.3em; opacity: 0.8; font-style: italic; color: #ccc; }
+    
+    /* ESTILOS PARA REDES Y VIDEO */
+    .social-links { text-align: center; padding: 40px 20px; background: #000; }
+    .social-links a { color: #fff; text-decoration: none; margin: 0 20px; font-size: 1em; letter-spacing: 2px; opacity: 0.6; transition: 0.4s; }
+    .social-links a:hover { opacity: 1; }
+    .video-container { max-width: 800px; margin: 40px auto; }
+    .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; }
+    .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
     .modal { display: none; position: fixed; background: rgba(0,0,0,0.98); top: 0; left: 0; width: 100%; height: 100%; z-index: 1000; justify-content: center; align-items: center; }
     .modal img { max-width: 95%; max-height: 95%; border: 1px solid #fff; }
     footer { text-align: center; padding: 80px; opacity: 0.3; font-size: 0.7em; letter-spacing: 2px; }
 </style>
 </head>
 <body>
+
 <section class="intro"><div>No necesito mucho para decir más</div></section>
 
 <section class="section resumido">
@@ -77,12 +87,24 @@
     </div>
 </section>
 
+<div class="video-container">
+    <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/TU_ID_AQUÍ" frameborder="0" allowfullscreen></iframe>
+    </div>
+</div>
+
 <section class="vision-section">
     <p class="vision-frase">"Desde las raíces campesinas de San Vicente del Caguán, la esencia de William trasciende la forma. Su alma yace en la versatilidad de la pincelada que se libera para revelar el espíritu."</p>
 </section>
 
+<div class="social-links">
+    <a href="https://www.instagram.com/wceronart?igsh=MWJ5cHdnNWc2Y2RkeQ==" target="_blank">INSTAGRAM</a>
+    <a href="https://www.facebook.com/share/1G6y5fSke3/" target="_blank">FACEBOOK</a>
+</div>
+
 <div class="modal" id="modal" onclick="closeModal()"><img id="modalImg"></div>
-<footer>WILLIAM CERÓN — CAMPESINO ORIUNDO DE SAN VICENTE DEL CAGUÁN — 2026</footer>
+
+<footer>WILLIAM CERÓN — CAMPESINO ORIUNDO DE SAN VICENTE DEL CAGUÁN</footer>
 
 <script>
 function openModal(img){ document.getElementById("modal").style.display = "flex"; document.getElementById("modalImg").src = img.src; }
