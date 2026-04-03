@@ -1,13 +1,11 @@
-<index.html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>William Cerón | ResumidoW</title>
 
 <style>
-
 body {
     margin: 0;
     background: #000;
@@ -65,6 +63,8 @@ body {
 
 .gallery img {
     width: 100%;
+    height: auto;
+    cursor: pointer;
     transition: 0.6s ease;
     opacity: 0;
     transform: translateY(40px);
@@ -98,6 +98,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
+    z-index: 1000;
     justify-content: center;
     align-items: center;
 }
@@ -121,48 +122,39 @@ footer {
     padding: 40px;
     opacity: 0.3;
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- INTRO -->
 <section class="intro">
     <div>
         No necesito mucho para decir más
     </div>
 </section>
 
-<!-- RESUMIDOW -->
 <section class="section resumido">
     <h2>RESUMIDOW</h2>
     <p>Lo esencial no se pinta… se revela</p>
 
     <div class="gallery">
-        <img src="resumido1.jpg" onclick="openModal(this)">
-        <img src="resumido2.jpg" onclick="openModal(this)">
-        <img src="resumido3.jpg" onclick="openModal(this)">
+        <img src="resumido/resumido1.jpg" onclick="openModal(this)" alt="La chica de la flor">
+        <img src="resumido/resumido2.jpg" onclick="openModal(this)" alt="Estampida">
+        <img src="resumido/resumido3.jpg" onclick="openModal(this)" alt="Giro Vital">
     </div>
 </section>
 
-<!-- FRASE -->
 <div class="frase">
     Antes de reducir… tuve que aprender a ver
 </div>
 
-<!-- OBRA REAL -->
 <section class="section real">
     <h2>OBRA</h2>
-
     <div class="gallery">
-        <img src="obra_principal.jpg" class="destacada" onclick="openModal(this)">
-        <img src="obra2.jpg" onclick="openModal(this)">
-        <img src="obra3.jpg" onclick="openModal(this)">
+        <img src="obra/obra_principal.jpg" class="destacada" onclick="openModal(this)">
     </div>
 </section>
 
-<!-- MODAL -->
 <div class="modal" id="modal" onclick="closeModal()">
     <img id="modalImg">
 </div>
@@ -172,8 +164,6 @@ footer {
 </footer>
 
 <script>
-
-/* MODAL */
 function openModal(img){
     document.getElementById("modal").style.display = "flex";
     document.getElementById("modalImg").src = img.src;
@@ -183,21 +173,20 @@ function closeModal(){
     document.getElementById("modal").style.display = "none";
 }
 
-/* ANIMACIÓN AL SCROLL */
 const images = document.querySelectorAll('.gallery img');
 
-window.addEventListener('scroll', () => {
+function checkScroll() {
     const trigger = window.innerHeight * 0.85;
-
     images.forEach(img => {
         const top = img.getBoundingClientRect().top;
-
         if(top < trigger){
             img.classList.add('visible');
         }
     });
-});
+}
 
+window.addEventListener('scroll', checkScroll);
+window.addEventListener('load', checkScroll);
 </script>
 
 </body>
