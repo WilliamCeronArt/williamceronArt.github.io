@@ -30,44 +30,42 @@ body {
     to { opacity: 1; }
 }
 
-/* SECCIONES GENERALES */
 .section {
-    padding: 100px 20px;
+    padding: 80px 20px;
     max-width: 1100px;
     margin: auto;
 }
 
-/* RESUMIDOW GALERÍA */
+/* 1. ESTILO RESUMIDOW (Galería Minimalista) */
 .resumido {
     text-align: center;
 }
 
 .resumido h2 {
     font-weight: normal;
-    letter-spacing: 3px;
+    letter-spacing: 4px;
     margin-bottom: 10px;
 }
 
 .resumido p {
     opacity: 0.5;
     font-style: italic;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 }
 
 .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
 }
 
-.gallery-item img {
+.gallery img {
     width: 100%;
     height: auto;
     cursor: pointer;
     transition: 0.6s ease;
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(30px);
     border: 1px solid rgba(255,255,255,0.1);
 }
 
@@ -76,43 +74,43 @@ body {
     transform: translateY(0);
 }
 
-/* SECCIÓN MIS OBRAS (DETALLADA) */
+/* 2. ESTILO MIS OBRAS (Muestra Detallada) */
 .mis-obras-section {
-    padding: 60px 20px;
+    padding: 100px 20px;
     text-align: center;
-    background: #050505; /* Un tono ligeramente diferente para separar */
+    background: #050505; /* Fondo sutilmente distinto */
 }
 
 .mis-obras-section h2 {
-    letter-spacing: 5px;
-    margin-bottom: 50px;
-    font-weight: bold;
+    letter-spacing: 6px;
+    margin-bottom: 70px;
+    font-size: 1.5em;
 }
 
 .obra-contenedor {
-    margin-bottom: 80px;
+    margin-bottom: 120px;
 }
 
 .obra-contenedor img {
     width: 95%;
-    max-width: 700px;
-    border: 2px solid #fff;
-    border-radius: 4px;
-    transition: 0.4s;
+    max-width: 800px;
+    border: 1px solid rgba(255,255,255,0.4);
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
 }
 
 .obra-contenedor p {
-    margin-top: 15px;
-    letter-spacing: 2px;
+    margin-top: 25px;
+    letter-spacing: 4px;
     text-transform: uppercase;
-    font-size: 0.9em;
+    font-size: 0.85em;
+    color: #aaa;
 }
 
 /* MODAL */
 .modal {
     display: none;
     position: fixed;
-    background: rgba(0,0,0,0.95);
+    background: rgba(0,0,0,0.98);
     top: 0;
     left: 0;
     width: 100%;
@@ -123,24 +121,24 @@ body {
 }
 
 .modal img {
-    max-width: 90%;
-    max-height: 90%;
+    max-width: 95%;
+    max-height: 95%;
 }
 
-/* FRASE TRANSICIÓN */
-.frase {
+.frase-final {
     text-align: center;
-    font-size: 1.5em;
-    opacity: 0.6;
-    margin: 100px 0;
+    font-size: 1.4em;
+    opacity: 0.5;
+    margin: 150px 0;
+    font-style: italic;
 }
 
-/* FOOTER */
 footer {
     text-align: center;
-    padding: 60px;
+    padding: 80px;
     opacity: 0.3;
-    font-size: 0.8em;
+    font-size: 0.75em;
+    letter-spacing: 1px;
 }
 </style>
 </head>
@@ -156,19 +154,13 @@ footer {
     <p>Lo esencial no se pinta… se revela</p>
 
     <div class="gallery">
-        <div class="gallery-item">
-            <img src="La%20chica%20de%20la%20flor.jpeg" onclick="openModal(this)" alt="La chica de la flor">
-        </div>
-        <div class="gallery-item">
-            <img src="Estampida.jpeg" onclick="openModal(this)" alt="Estampida">
-        </div>
-        <div class="gallery-item">
-            <img src="Giro%20vital.jpeg" onclick="openModal(this)" alt="Giro Vital">
-        </div>
+        <img src="La%20chica%20de%20la%20flor.jpeg" onclick="openModal(this)" alt="La chica de la flor">
+        <img src="Estampida.jpeg" onclick="openModal(this)" alt="Estampida">
+        <img src="Giro%20vital.jpeg" onclick="openModal(this)" alt="Giro Vital">
     </div>
 </section>
 
-<div class="frase">Antes de reducir… tuve que aprender a ver</div>
+<div class="frase-final">Antes de reducir… tuve que aprender a ver</div>
 
 <section class="mis-obras-section">
     <h2>MIS OBRAS</h2>
@@ -194,7 +186,7 @@ footer {
 </div>
 
 <footer>
-    William Cerón — El arte vive donde no se explica
+    WILLIAM CERÓN — EL ARTE VIVE DONDE NO SE EXPLICA
 </footer>
 
 <script>
@@ -207,7 +199,7 @@ function closeModal(){
     document.getElementById("modal").style.display = "none";
 }
 
-// Efecto de aparición al hacer scroll
+// Efecto de aparición suave de imágenes
 const images = document.querySelectorAll('.gallery img');
 function checkScroll() {
     const trigger = window.innerHeight * 0.85;
@@ -218,7 +210,6 @@ function checkScroll() {
         }
     });
 }
-
 window.addEventListener('scroll', checkScroll);
 window.addEventListener('load', checkScroll);
 </script>
