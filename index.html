@@ -30,14 +30,14 @@ body {
     to { opacity: 1; }
 }
 
-/* SECCIONES */
+/* SECCIONES GENERALES */
 .section {
     padding: 100px 20px;
     max-width: 1100px;
     margin: auto;
 }
 
-/* RESUMIDOW */
+/* RESUMIDOW GALERÍA */
 .resumido {
     text-align: center;
 }
@@ -51,9 +51,9 @@ body {
 .resumido p {
     opacity: 0.5;
     font-style: italic;
+    margin-bottom: 40px;
 }
 
-/* GALERÍA */
 .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -61,13 +61,14 @@ body {
     margin-top: 40px;
 }
 
-.gallery img {
+.gallery-item img {
     width: 100%;
     height: auto;
     cursor: pointer;
     transition: 0.6s ease;
     opacity: 0;
     transform: translateY(40px);
+    border: 1px solid rgba(255,255,255,0.1);
 }
 
 .gallery img.visible {
@@ -75,18 +76,36 @@ body {
     transform: translateY(0);
 }
 
-.gallery img:hover {
-    transform: scale(1.05);
+/* SECCIÓN MIS OBRAS (DETALLADA) */
+.mis-obras-section {
+    padding: 60px 20px;
+    text-align: center;
+    background: #050505; /* Un tono ligeramente diferente para separar */
 }
 
-/* OBRA REAL */
-.real {
-    background: #050505;
+.mis-obras-section h2 {
+    letter-spacing: 5px;
+    margin-bottom: 50px;
+    font-weight: bold;
 }
 
-/* DESTACADA */
-.destacada {
-    grid-column: span 2;
+.obra-contenedor {
+    margin-bottom: 80px;
+}
+
+.obra-contenedor img {
+    width: 95%;
+    max-width: 700px;
+    border: 2px solid #fff;
+    border-radius: 4px;
+    transition: 0.4s;
+}
+
+.obra-contenedor p {
+    margin-top: 15px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-size: 0.9em;
 }
 
 /* MODAL */
@@ -119,35 +138,17 @@ body {
 /* FOOTER */
 footer {
     text-align: center;
-    padding: 40px;
+    padding: 60px;
     opacity: 0.3;
+    font-size: 0.8em;
 }
 </style>
 </head>
 
 <body>
-<section style="padding: 20px; text-align: center;">
-    <h2 style="letter-spacing: 3px; color: white;">MIS OBRAS</h2>
-    
-    <div style="margin-bottom: 40px;">
-        <img src="Estampida.jpeg" alt="Estampida" style="width: 90%; max-width: 600px; border: 2px solid #fff; border-radius: 8px;">
-        <p style="color: white; margin-top: 10px;">Estampida</p>
-    </div>
 
-    <div style="margin-bottom: 40px;">
-        <img src="La%20chica%20de%20la%20flor.jpeg" alt="La chica de la flor" style="width: 90%; max-width: 600px; border: 2px solid #fff; border-radius: 8px;">
-        <p style="color: white; margin-top: 10px;">La chica de la flor</p>
-    </div>
-
-    <div style="margin-bottom: 40px;">
-        <img src="Giro%20vital.jpeg" alt="Giro vital" style="width: 90%; max-width: 600px; border: 2px solid #fff; border-radius: 8px;">
-        <p style="color: white; margin-top: 10px;">Giro Vital</p>
-    </div>
-</section>
 <section class="intro">
-    <div>
-        No necesito mucho para decir más
-    </div>
+    <div>No necesito mucho para decir más</div>
 </section>
 
 <section class="section resumido">
@@ -155,20 +156,36 @@ footer {
     <p>Lo esencial no se pinta… se revela</p>
 
     <div class="gallery">
-        <img src="resumido/resumido1.jpg" onclick="openModal(this)" alt="La chica de la flor">
-        <img src="resumido/resumido2.jpg" onclick="openModal(this)" alt="Estampida">
-        <img src="resumido/resumido3.jpg" onclick="openModal(this)" alt="Giro Vital">
+        <div class="gallery-item">
+            <img src="La%20chica%20de%20la%20flor.jpeg" onclick="openModal(this)" alt="La chica de la flor">
+        </div>
+        <div class="gallery-item">
+            <img src="Estampida.jpeg" onclick="openModal(this)" alt="Estampida">
+        </div>
+        <div class="gallery-item">
+            <img src="Giro%20vital.jpeg" onclick="openModal(this)" alt="Giro Vital">
+        </div>
     </div>
 </section>
 
-<div class="frase">
-    Antes de reducir… tuve que aprender a ver
-</div>
+<div class="frase">Antes de reducir… tuve que aprender a ver</div>
 
-<section class="section real">
-    <h2>OBRA</h2>
-    <div class="gallery">
-        <img src="obra/obra_principal.jpg" class="destacada" onclick="openModal(this)">
+<section class="mis-obras-section">
+    <h2>MIS OBRAS</h2>
+    
+    <div class="obra-contenedor">
+        <img src="Estampida.jpeg" alt="Estampida">
+        <p>Estampida</p>
+    </div>
+
+    <div class="obra-contenedor">
+        <img src="La%20chica%20de%20la%20flor.jpeg" alt="La chica de la flor">
+        <p>La chica de la flor</p>
+    </div>
+
+    <div class="obra-contenedor">
+        <img src="Giro%20vital.jpeg" alt="Giro vital">
+        <p>Giro Vital</p>
     </div>
 </section>
 
@@ -190,8 +207,8 @@ function closeModal(){
     document.getElementById("modal").style.display = "none";
 }
 
+// Efecto de aparición al hacer scroll
 const images = document.querySelectorAll('.gallery img');
-
 function checkScroll() {
     const trigger = window.innerHeight * 0.85;
     images.forEach(img => {
