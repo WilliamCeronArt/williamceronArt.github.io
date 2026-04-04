@@ -4,102 +4,177 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>William Cerón | Portafolio Artístico</title>
-<style>
-    body { margin: 0; background: #000; color: #fff; font-family: 'Segoe UI', Arial, sans-serif; overflow-x: hidden; }
-    .intro { height: 100vh; display: flex; justify-content: center; align-items: center; font-size: 1.8em; text-align: center; opacity: 0; animation: fadeIn 3s forwards; }
-    @keyframes fadeIn { to { opacity: 1; } }
-    .section { padding: 80px 20px; max-width: 1100px; margin: auto; }
-    .resumido { text-align: center; }
-    .resumido h2 { font-weight: 300; letter-spacing: 5px; margin-bottom: 10px; font-size: 2em; }
-    .resumido p { opacity: 0.5; font-style: italic; margin-bottom: 50px; }
-    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-    .gallery img { width: 100%; height: auto; cursor: pointer; transition: 0.6s ease; opacity: 0; transform: translateY(30px); border: 1px solid rgba(255,255,255,0.1); }
-    .gallery img.visible { opacity: 1; transform: translateY(0); }
-    .frase-medio { text-align: center; font-size: 1.5em; opacity: 0.6; margin: 100px 0; font-style: italic; }
-    .trayectoria-section { padding: 100px 20px; text-align: center; background: #080808; }
-    .trayectoria-section h2 { letter-spacing: 8px; margin-bottom: 80px; font-size: 2.2em; text-transform: uppercase; border-bottom: 1px solid #333; display: inline-block; padding-bottom: 15px; }
-    .trayectoria-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 50px; }
-    .equina-section { padding: 100px 20px; text-align: center; background: #000; }
-    .equina-section h2 { letter-spacing: 8px; margin-bottom: 80px; font-size: 2.2em; text-transform: uppercase; border-bottom: 2px solid #fff; display: inline-block; padding-bottom: 15px; }
-    .obra-item { margin-bottom: 80px; text-align: center; }
-    .obra-item img { width: 100%; height: auto; border: 1px solid rgba(255,255,255,0.2); transition: 0.5s; cursor: pointer; }
-    .obra-item img:hover { border-color: #fff; box-shadow: 0 0 25px rgba(255,255,255,0.1); }
-    .obra-item h3 { margin-top: 25px; letter-spacing: 3px; font-weight: 400; text-transform: uppercase; color: #fff; font-size: 1em; }
-    .vision-section { text-align: center; padding: 120px 20px; background: #030303; }
-    .vision-frase { max-width: 800px; margin: 0 auto; line-height: 1.8; font-size: 1.3em; opacity: 0.8; font-style: italic; color: #ccc; }
-    
-    /* ESTILOS PARA REDES Y VIDEO */
-    .social-links { text-align: center; padding: 40px 20px; background: #000; }
-    .social-links a { color: #fff; text-decoration: none; margin: 0 20px; font-size: 1em; letter-spacing: 2px; opacity: 0.6; transition: 0.4s; }
-    .social-links a:hover { opacity: 1; }
-    .video-container { max-width: 800px; margin: 40px auto; }
-    .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; }
-    .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
-    .modal { display: none; position: fixed; background: rgba(0,0,0,0.98); top: 0; left: 0; width: 100%; height: 100%; z-index: 1000; justify-content: center; align-items: center; }
-    .modal img { max-width: 95%; max-height: 95%; border: 1px solid #fff; }
-    footer { text-align: center; padding: 80px; opacity: 0.3; font-size: 0.7em; letter-spacing: 2px; }
+<style>
+body { margin: 0; background: #000; color: #fff; font-family: 'Segoe UI', Arial, sans-serif; overflow-x: hidden; cursor: none; }
+
+/* TEXTURA */
+body::after{
+    content:"";
+    position:fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background:url("grain.png");
+    opacity:0.05;
+    pointer-events:none;
+    z-index:999;
+}
+
+/* CURSOR */
+.cursor{
+    position:fixed;
+    width:20px;
+    height:20px;
+    border:1px solid rgba(255,255,255,0.4);
+    border-radius:50%;
+    pointer-events:none;
+    transform:translate(-50%,-50%);
+    z-index:1000;
+    transition:0.1s;
+}
+
+/* INTRO */
+.intro { height: 100vh; display: flex; justify-content: center; align-items: center; font-size: 1.8em; text-align: center; opacity: 0; animation: fadeIn 3s forwards; }
+@keyframes fadeIn { to { opacity: 1; } }
+
+/* SECCIONES */
+.section { padding: 80px 20px; max-width: 1100px; margin: auto; }
+.resumido { text-align: center; }
+.resumido h2 { font-weight: 300; letter-spacing: 5px; margin-bottom: 10px; font-size: 2em; }
+.resumido p { opacity: 0.5; font-style: italic; margin-bottom: 50px; }
+
+/* GALERÍA */
+.gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.gallery img {
+    width: 100%;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+    transition: 1s cubic-bezier(.2,.7,.2,1);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+.gallery img.visible { opacity: 1; transform: translateY(0) scale(1); }
+.gallery img:hover { transform: scale(1.05); }
+
+/* FRASE */
+.frase-medio { text-align: center; font-size: 1.5em; opacity: 0.6; margin: 100px 0; font-style: italic; }
+
+/* TRAYECTORIA */
+.trayectoria-section { padding: 100px 20px; text-align: center; background: #080808; }
+.trayectoria-section h2 { letter-spacing: 8px; margin-bottom: 80px; font-size: 2.2em; text-transform: uppercase; border-bottom: 1px solid #333; display: inline-block; padding-bottom: 15px; }
+.trayectoria-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 50px; }
+
+/* OBRAS */
+.obra-item { margin-bottom: 80px; text-align: center; }
+.obra-item img {
+    width: 100%;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: 0.6s;
+    cursor: pointer;
+}
+.obra-item img:hover {
+    border-color: #fff;
+    box-shadow: 0 0 35px rgba(255,255,255,0.15);
+    transform: scale(1.02);
+}
+.obra-item h3 { margin-top: 25px; letter-spacing: 3px; font-weight: 400; text-transform: uppercase; font-size: 1em; }
+
+/* EQUINA */
+.equina-section { padding: 100px 20px; text-align: center; background: #000; }
+.equina-section h2 { letter-spacing: 8px; margin-bottom: 80px; font-size: 2.2em; text-transform: uppercase; border-bottom: 2px solid #fff; display: inline-block; padding-bottom: 15px; }
+
+/* VIDEO */
+.video-container { max-width: 800px; margin: 40px auto; }
+.video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; }
+.video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+/* VISIÓN */
+.vision-section { text-align: center; padding: 120px 20px; background: #030303; }
+.vision-frase { max-width: 800px; margin: 0 auto; line-height: 1.8; font-size: 1.3em; opacity: 0.8; font-style: italic; color: #ccc; }
+
+/* REDES */
+.social-links { text-align: center; padding: 40px 20px; }
+.social-links a { color: #fff; text-decoration: none; margin: 0 20px; letter-spacing: 2px; opacity: 0.6; transition: 0.4s; }
+.social-links a:hover { opacity: 1; }
+
+/* MODAL */
+.modal { display: none; position: fixed; background: rgba(0,0,0,0.98); top: 0; left: 0; width: 100%; height: 100%; z-index: 1000; justify-content: center; align-items: center; }
+.modal img { max-width: 95%; max-height: 95%; border: 1px solid #fff; }
+
+/* FOOTER */
+footer { text-align: center; padding: 80px; opacity: 0.3; font-size: 0.7em; letter-spacing: 2px; }
 </style>
 </head>
+
 <body>
+
+<div class="cursor"></div>
+
+<!-- AUDIO (opcional, solo agrega archivo audio.mp3 al repo) -->
+<audio id="bgAudio" autoplay loop>
+    <source src="audio.mp3" type="audio/mpeg">
+</audio>
 
 <section class="intro"><div>No necesito mucho para decir más</div></section>
 
 <section class="section resumido">
-    <h2>RESUMIDOW</h2><p>Lo esencial no se pinta… se revela</p>
-    <div class="gallery">
-        <img src="La%20chica%20de%20la%20flor.jpeg" onclick="openModal(this)">
-        <img src="Estampida.jpeg" onclick="openModal(this)">
-        <img src="Giro%20vital.jpeg" onclick="openModal(this)">
-    </div>
+<h2>RESUMIDOW</h2>
+<p>Lo esencial no se pinta… se revela</p>
+
+<div class="gallery">
+<img src="La%20chica%20de%20la%20flor.jpeg" onclick="openModal(this)">
+<img src="Estampida.jpeg" onclick="openModal(this)">
+<img src="Giro%20vital.jpeg" onclick="openModal(this)">
+</div>
 </section>
 
 <div class="frase-medio">Antes de reducir… tuve que aprender a ver</div>
 
 <section class="trayectoria-section">
-    <h2>Trayectoria</h2>
-    <div class="trayectoria-grid">
-        <div class="obra-item"><img src="Fervor%20fucsia.jpeg" onclick="openModal(this)"><h3>Fervor fucsia</h3></div>
-        <div class="obra-item"><img src="Alma%20de%20acordeón.jpeg" onclick="openModal(this)"><h3>Alma de acordeón</h3></div>
-        <div class="obra-item"><img src="Reflejo%20del%20ser.jpeg" onclick="openModal(this)"><h3>Reflejo del ser</h3></div>
-        <div class="obra-item"><img src="Mirada%20de%20guerra.jpeg" onclick="openModal(this)"><h3>Mirada de guerra</h3></div>
-        <div class="obra-item"><img src="Eterno%20sufrimiento.jpeg" onclick="openModal(this)"><h3>Eterno sufrimiento</h3></div>
-        <div class="obra-item"><img src="Metamorfosis%20pop.jpeg" onclick="openModal(this)"><h3>Metamorfosis pop</h3></div>
-        <div class="obra-item"><img src="Caos%20interior.jpeg" onclick="openModal(this)"><h3>Caos interior</h3></div>
-        <div class="obra-item"><img src="Esencia%20atrapada.jpeg" onclick="openModal(this)"><h3>Esencia atrapada</h3></div>
-        <div class="obra-item"><img src="Raíces%20del%20alma.jpeg" onclick="openModal(this)"><h3>Raíces del alma</h3></div>
-        <div class="obra-item"><img src="El%20toque%20de%20la%20creación.jpeg" onclick="openModal(this)"><h3>El toque de la creación</h3></div>
-        <div class="obra-item"><img src="Duelo%20de%20sabiduría.jpeg" onclick="openModal(this)"><h3>Duelo de sabiduría</h3></div>
-        <div class="obra-item"><img src="Pétalos%20del%20tiempo.jpeg" onclick="openModal(this)"><h3>Pétalos del tiempo</h3></div>
-        <div class="obra-item"><img src="Edad%20de%20esplendor.jpeg" onclick="openModal(this)"><h3>Edad de esplendor</h3></div>
-        <div class="obra-item"><img src="Refugio.jpeg" onclick="openModal(this)"><h3>Refugio</h3></div>
-        <div class="obra-item"><img src="Alma%20reflejada.jpeg" onclick="openModal(this)"><h3>Alma reflejada</h3></div>
-        <div class="obra-item"><img src="Mirada%20icónica.jpeg" onclick="openModal(this)"><h3>Mirada icónica</h3></div>
-        <div class="obra-item"><img src="Lagertha.jpeg" onclick="openModal(this)"><h3>Lagertha</h3></div>
-    </div>
+<h2>Trayectoria</h2>
+
+<div class="trayectoria-grid">
+<div class="obra-item"><img src="Fervor%20fucsia.jpeg" onclick="openModal(this)"><h3>Fervor fucsia</h3></div>
+<div class="obra-item"><img src="Alma%20de%20acordeón.jpeg" onclick="openModal(this)"><h3>Alma de acordeón</h3></div>
+<div class="obra-item"><img src="Reflejo%20del%20ser.jpeg" onclick="openModal(this)"><h3>Reflejo del ser</h3></div>
+<div class="obra-item"><img src="Mirada%20de%20guerra.jpeg" onclick="openModal(this)"><h3>Mirada de guerra</h3></div>
+<div class="obra-item"><img src="Eterno%20sufrimiento.jpeg" onclick="openModal(this)"><h3>Eterno sufrimiento</h3></div>
+<div class="obra-item"><img src="Metamorfosis%20pop.jpeg" onclick="openModal(this)"><h3>Metamorfosis pop</h3></div>
+<div class="obra-item"><img src="Caos%20interior.jpeg" onclick="openModal(this)"><h3>Caos interior</h3></div>
+<div class="obra-item"><img src="Esencia%20atrapada.jpeg" onclick="openModal(this)"><h3>Esencia atrapada</h3></div>
+<div class="obra-item"><img src="Raíces%20del%20alma.jpeg" onclick="openModal(this)"><h3>Raíces del alma</h3></div>
+<div class="obra-item"><img src="El%20toque%20de%20la%20creación.jpeg" onclick="openModal(this)"><h3>El toque de la creación</h3></div>
+<div class="obra-item"><img src="Duelo%20de%20sabiduría.jpeg" onclick="openModal(this)"><h3>Duelo de sabiduría</h3></div>
+<div class="obra-item"><img src="Pétalos%20del%20tiempo.jpeg" onclick="openModal(this)"><h3>Pétalos del tiempo</h3></div>
+<div class="obra-item"><img src="Edad%20de%20esplendor.jpeg" onclick="openModal(this)"><h3>Edad de esplendor</h3></div>
+<div class="obra-item"><img src="Refugio.jpeg" onclick="openModal(this)"><h3>Refugio</h3></div>
+<div class="obra-item"><img src="Alma%20reflejada.jpeg" onclick="openModal(this)"><h3>Alma reflejada</h3></div>
+<div class="obra-item"><img src="Mirada%20icónica.jpeg" onclick="openModal(this)"><h3>Mirada icónica</h3></div>
+<div class="obra-item"><img src="Lagertha.jpeg" onclick="openModal(this)"><h3>Lagertha</h3></div>
+</div>
 </section>
 
 <section class="equina-section">
-    <h2>Esencia Equina</h2>
-    <div class="trayectoria-grid">
-        <div class="obra-item"><img src="Vigor%20desbocado.jpeg" onclick="openModal(this)"><h3>Vigor desbocado</h3></div>
-        <div class="obra-item"><img src="Libertad%20en%20movimiento.jpeg" onclick="openModal(this)"><h3>Libertad en movimiento</h3></div>
-    </div>
+<h2>Esencia Equina</h2>
+<div class="trayectoria-grid">
+<div class="obra-item"><img src="Vigor%20desbocado.jpeg" onclick="openModal(this)"><h3>Vigor desbocado</h3></div>
+<div class="obra-item"><img src="Libertad%20en%20movimiento.jpeg" onclick="openModal(this)"><h3>Libertad en movimiento</h3></div>
+</div>
 </section>
 
 <div class="video-container">
-    <div class="video-wrapper">
-        <iframe src="https://www.youtube.com/embed/TU_ID_AQUÍ" frameborder="0" allowfullscreen></iframe>
-    </div>
+<div class="video-wrapper">
+<iframe src="https://www.youtube.com/embed/TU_ID_AQUI" frameborder="0" allowfullscreen></iframe>
+</div>
 </div>
 
 <section class="vision-section">
-    <p class="vision-frase">"Desde las raíces campesinas de San Vicente del Caguán, la esencia de William trasciende la forma. Su alma yace en la versatilidad de la pincelada que se libera para revelar el espíritu."</p>
+<p class="vision-frase">"Desde las raíces campesinas de San Vicente del Caguán, la esencia de William trasciende la forma..."</p>
 </section>
 
 <div class="social-links">
-    <a href="https://www.instagram.com/wceronart?igsh=MWJ5cHdnNWc2Y2RkeQ==" target="_blank">INSTAGRAM</a>
-    <a href="https://www.facebook.com/share/1G6y5fSke3/" target="_blank">FACEBOOK</a>
+<a href="https://www.instagram.com/wceronart" target="_blank">INSTAGRAM</a>
+<a href="https://www.facebook.com" target="_blank">FACEBOOK</a>
 </div>
 
 <div class="modal" id="modal" onclick="closeModal()"><img id="modalImg"></div>
@@ -107,18 +182,38 @@
 <footer>WILLIAM CERÓN — CAMPESINO ORIUNDO DE SAN VICENTE DEL CAGUÁN</footer>
 
 <script>
-function openModal(img){ document.getElementById("modal").style.display = "flex"; document.getElementById("modalImg").src = img.src; }
-function closeModal(){ document.getElementById("modal").style.display = "none"; }
-const images = document.querySelectorAll('img');
-function checkScroll() {
-    const trigger = window.innerHeight * 0.85;
-    images.forEach(img => {
-        const top = img.getBoundingClientRect().top;
-        if(top < trigger) img.classList.add('visible');
-    });
+function openModal(img){
+document.getElementById("modal").style.display="flex";
+document.getElementById("modalImg").src=img.src;
 }
-window.addEventListener('scroll', checkScroll);
-window.addEventListener('load', checkScroll);
+function closeModal(){
+document.getElementById("modal").style.display="none";
+}
+
+/* SCROLL REVEAL */
+const images=document.querySelectorAll('img');
+function checkScroll(){
+const trigger=window.innerHeight*0.85;
+images.forEach(img=>{
+const top=img.getBoundingClientRect().top;
+if(top<trigger) img.classList.add('visible');
+});
+}
+window.addEventListener('scroll',checkScroll);
+window.addEventListener('load',checkScroll);
+
+/* CURSOR */
+const cursor=document.querySelector('.cursor');
+document.addEventListener('mousemove',e=>{
+cursor.style.left=e.clientX+'px';
+cursor.style.top=e.clientY+'px';
+});
+
+/* AUDIO ACTIVACIÓN (por seguridad navegador) */
+document.body.addEventListener('click',()=>{
+document.getElementById("bgAudio").play();
+},{once:true});
 </script>
+
 </body>
 </html>
